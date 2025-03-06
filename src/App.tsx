@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import TweetList from "./components/TweetList";
 import TweetForm from "./components/TweetForm";
 
-let localTweets = [
+const initialTweets = [
 	{
 		id: 1,
 		content: "Welcome to the React Tweet Board!",
@@ -19,19 +19,21 @@ let localTweets = [
 	},
 ];
 
-const onSaveCallback = (tweet: string) => {
-	localTweets.push({
-		id: localTweets.length + 1,
-		content: tweet,
-		username: "user1",
-		timestamp: new Date(),
-	});
-};
-
 function App() {
+	const [tweets, setTweets] = useState(initialTweets);
+	
+	const onSaveCallback = (tweet: string) => {
+		setTweets([...tweets, {
+			id: tweets.length + 1,
+			content: tweet,
+			username: "user1",
+			timestamp: new Date(),
+		}]);
+	};
+	
 	return (
 		<div className="App">
-			<TweetList tweets={localTweets} />
+			<TweetList tweets={tweets} />
 			<TweetForm onSaveCallback={onSaveCallback} />
 		</div>
 	);

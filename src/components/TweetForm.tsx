@@ -11,20 +11,24 @@ const TweetForm = ({ onSaveCallback }: TweetFormProps) => {
 	};
 
 	const onClickHandler = (event: React.MouseEvent) => {
+		event.preventDefault();
 		onSaveCallback(tweetInput);
+		setTweetInput("");
 	};
 
 	const onSubmit = (event: any) => {
 		event.preventDefault();
-
 		onSaveCallback(tweetInput);
+		setTweetInput("");
 	};
 
 	return (
 		<form onSubmit={onSubmit}>
-			<textarea onChange={inputHandler}></textarea>
+			<textarea 
+				value={tweetInput}
+				onChange={inputHandler}
+			></textarea>
 			<button onClick={onClickHandler}>Submit</button>
-			<div>{tweetInput}</div>
 		</form>
 	);
 };
