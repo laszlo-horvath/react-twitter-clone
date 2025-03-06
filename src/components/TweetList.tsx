@@ -25,14 +25,16 @@ const TweetList = ({ tweets }: TweetListProps) => {
 	// render the data
 	return (
 		<div>
+			<h2>Recent Tweets</h2>
 			<ul className="tweets">
 				{tweetsByDate?.map((tweet) => {
 					return (
 						<li key={tweet.id}>
-							<p>{tweet.id}</p>
-							<p>{tweet.content}</p>
-							<p>{tweet.username}</p>
-							<p>{tweet.timestamp.toDateString()}</p>
+							<div className="tweet-header">
+								<span className="tweet-username">@{tweet.username}</span>
+								<span className="tweet-date">{tweet.timestamp.toDateString()}</span>
+							</div>
+							<div className="tweet-content">{tweet.content}</div>
 						</li>
 					);
 				})}

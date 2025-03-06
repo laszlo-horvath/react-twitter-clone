@@ -27,8 +27,9 @@ const TweetForm = ({ onSaveCallback }: TweetFormProps) => {
 			<textarea 
 				value={tweetInput}
 				onChange={inputHandler}
+				placeholder="What's happening?"
 			></textarea>
-			<button onClick={onClickHandler}>Submit</button>
+			<button type="submit">Tweet</button>
 		</form>
 	);
 };

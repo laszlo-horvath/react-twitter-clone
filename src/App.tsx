@@ -33,8 +33,11 @@ function App() {
 	
 	return (
 		<div className="App">
-			<TweetList tweets={tweets} />
+			<header>
+				<h1>Twitter Clone</h1>
+			</header>
 			<TweetForm onSaveCallback={onSaveCallback} />
+			<TweetList tweets={tweets} />
 		</div>
 	);
 }
